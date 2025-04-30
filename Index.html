@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Servicios QuickMassage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Calculadora de Servicios QuickMassage</h1>
+        <div>
+            <span id="fechaActual"></span> <!-- Span para la fecha -->
+            <button id="limpiarBtn">Limpiar</button>
+            <button id="imprimirBtn">Imprimir Control Interno</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECCIÓN 1: PARÁMETROS GENERALES -->
+        <section id="parametrosGenerales">
+            <h2>1. Parámetros Generales</h2>
+
+            <div>
+                <label for="tipoServicio">Tipo de Servicio:</label>
+                <select id="tipoServicio">
+                    <option value="">-- Seleccione --</option>
+                    <option value="eventual">Cobertura Única / Eventual</option>
+                    <option value="corporativo">Corporativo (Plan Mensual)</option>
+                    <option value="deportivo">Deportivo</option>
+                </select>
+            </div>
+
+            <!-- Input Numérico con Botones +/- -->
+            <div>
+                <label for="cantidadMasajistas">Cantidad de Masajistas:</label>
+                <div class="number-input-container">
+                    <button type="button" class="btn-decrement" data-target="cantidadMasajistas">-</button>
+                    <input type="number" id="cantidadMasajistas" value="1" min="1">
+                    <button type="button" class="btn-increment" data-target="cantidadMasajistas">+</button>
+                </div>
+            </div>
+
+            <div>
+                <label>Duración Masaje Individual (Estimado):</label>
+                <div id="duracionMasajeGroup">
+                    <button type="button" class="duracion-btn" data-value="7">7 min</button>
+                    <button type="button" class="duracion-btn active" data-value="10">10 min</button>
+                    <button type="button" class="duracion-btn" data-value="15">15 min</button>
+                    <button type="button" class="duracion-btn" data-value="na">N/A</button>
+                </div>
+                <input type="hidden" id="duracionMasajeSeleccionada" value="10">
+            </div>
+
+            <div>
+                <label for="nivelPrecio">Nivel de Precio Cliente:</label>
+                <select id="nivelPrecio">
+                    <option value="">-- Seleccione Tipo Servicio --</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: DETALLES (DINÁMICA) -->
+        <section id="detallesServicio">
+
+            <!-- Subsección para Eventual -->
+            <div id="detallesEventual" class="detalle-subseccion" style="display: none;">
+                <h2>2. Detalles Eventual</h2>
+                <div>
+                    <label for="horasCoberturaEventual">Horas de Cobertura (por día): <span id="horasCoberturaEventualValue">1</span> h</label>
+                    <input type="range" id="horasCoberturaEventual" min="1" max="8" step="0.5" value="1">
+                </div>
+                <div>
+                    <label for="diaPredominanteEventual">Día(s) Predominante(s) del Evento:</label>
+                    <select id="diaPredominanteEventual">
+                        <option value="">-- Seleccione --</option>
+                        <option value="LV">Lunes a Viernes</option>
+                        <option value="Sab">Sábado</option>
+                        <option value="Dom">Domingo</option>
+                    </select>
+                </div>
+                 <!-- Input Numérico con Botones +/- -->
+                 <div>
+                    <label for="numeroDiasEventual">Número de Días de Cobertura:</label>
+                     <div class="number-input-container">
+                        <button type="button" class="btn-decrement" data-target="numeroDiasEventual">-</button>
+                        <input type="number" id="numeroDiasEventual" value="1" min="1">
+                        <button type="button" class="btn-increment" data-target="numeroDiasEventual">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subsección para Corporativo -->
+            <div id="detallesCorporativo" class="detalle-subseccion" style="display: none;">
+                <h2>2. Detalles Corporativo</h2>
+                 <!-- Slider reemplaza al Select -->
+                 <div>
+                     <label for="duracionVisitaCorporativoSlider">Duración Visita Semanal (por masajista): <span id="duracionVisitaCorporativoValue">1</span> h</label>
+                     <input type="range" id="duracionVisitaCorporativoSlider" min="1" max="8" step="0.5" value="1">
+                 </div>
+                 <div>
+                     <label for="frecuenciaCorporativo">Frecuencia Semanal:</label>
+                     <select id="frecuenciaCorporativo">
+                         <option value="">-- Seleccione --</option>
+                         <option value="1S">Una vez por semana</option>
+                         <option value="2S">Dos veces por semana</option>
+                         <option value="3S">Tres veces por semana</option>
+                     </select>
+                 </div>
+            </div>
+
+            <!-- Subsección para Deportivo -->
+            <div id="detallesDeportivo" class="detalle-subseccion" style="display: none;">
+                <h2>2. Detalles Deportivo</h2>
+                <div>
+                    <label for="horasCoberturaDeportivo">Horas de Cobertura (por día): <span id="horasCoberturaDeportivoValue">1</span> h</label>
+                    <input type="range" id="horasCoberturaDeportivo" min="1" max="8" step="0.5" value="1">
+                </div>
+                <div>
+                    <label for="diaPredominanteDeportivo">Día(s) Predominante(s) del Evento:</label>
+                    <select id="diaPredominanteDeportivo">
+                        <option value="">-- Seleccione --</option>
+                        <option value="Sab">Sábado</option>
+                        <option value="Dom">Domingo</option>
+                    </select>
+                </div>
+                 <!-- Input Numérico con Botones +/- -->
+                 <div>
+                    <label for="numeroDiasDeportivo">Número de Días de Cobertura:</label>
+                    <div class="number-input-container">
+                         <button type="button" class="btn-decrement" data-target="numeroDiasDeportivo">-</button>
+                         <input type="number" id="numeroDiasDeportivo" value="1" min="1">
+                        <button type="button" class="btn-increment" data-target="numeroDiasDeportivo">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN 3: COSTOS ADICIONALES -->
+        <section id="costosAdicionales">
+             <h2>3. Costos Adicionales</h2>
+             <div>
+                 <label for="montoAdicional">Monto Adicional Cliente (Total Evento/Plan - Ej: Traslado):</label>
+                 <!-- Input numérico normal aquí, sin botones +/- -->
+                 <input type="number" id="montoAdicional" value="0" min="0">
+             </div>
+             <div>
+                 <label for="conceptoAdicional">Concepto Adicional (Opcional):</label>
+                 <input type="text" id="conceptoAdicional" placeholder="Ej: Traslado especial">
+             </div>
+        </section>
+
+        <!-- SECCIÓN 4: RESUMEN DEL PRESUPUESTO -->
+        <section id="resumenPresupuesto">
+            <h2>4. Resumen del Presupuesto</h2>
+
+            <!-- Divs con clases añadidas -->
+            <div class="resumen-principal">
+                 <div class="resumen-precio">
+                    <span>Precio Total Cliente (<span class="etiqueta-periodo">Evento/Plan</span>):</span>
+                    <strong id="resultadoPrecioTotal">0 Gs.</strong>
+                 </div>
+                 <div class="resumen-ganancia">
+                     <span>Ganancia Estimada (<span class="etiqueta-periodo">Evento/Plan</span>):</span>
+                     <strong id="resultadoGananciaEstimada">0 Gs.</strong>
+                 </div>
+            </div>
+
+            <div class="resumen-detalles">
+                <div>
+                    <h3>Detalle Cliente</h3>
+                    <p>Precio Base (<span class="etiqueta-periodo-detalle">por día/mes</span>): <span id="detallePrecioBase">0</span></p>
+                    <p>Costo Adicional (total): <span id="detalleCostoAdicional">0</span></p>
+                </div>
+                 <div>
+                     <h3>Detalle Costos</h3>
+                     <p>Pago Masajista (<span class="etiqueta-periodo-detalle">por día/mes</span>): <span id="detallePagoMasajista">0</span></p>
+                     <p>Costo Total Masajistas (<span class="etiqueta-periodo">Evento/Plan</span>): <span id="detalleCostoTotalMasajistas">0</span></p>
+                 </div>
+                 <div id="seccionDetalleMasajes" style="display: none;">
+                     <h3>Detalle Masajes (<span id="detalleDuracionSeleccionada">N/A</span>)</h3>
+                     <p>Masajes x Masajista/Visita: <span id="detalleMasajesPorVisita">0</span></p>
+                     <p>Total Masajes (<span class="etiqueta-periodo">Evento/Plan</span> Completo): <span id="detalleMasajesTotales">0</span></p>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

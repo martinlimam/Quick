@@ -1,0 +1,278 @@
+/* Estilos Generales */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #212529;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header {
+    background-color: #0d6efd;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+header div { /* Contenedor de fecha y botones */
+   display: flex;
+   align-items: center;
+}
+
+/* Estilo para la fecha en el header */
+#fechaActual {
+    margin-right: 15px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+header button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#limpiarBtn {
+    background-color: #ffc107;
+    color: #000;
+}
+
+#imprimirBtn {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Secciones */
+section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+section h2 {
+    color: #0d6efd;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+section h3 {
+    font-size: 1.1em;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+/* Contenedores de inputs y labels */
+section > div:not(.resumen-principal):not(.resumen-detalles):not(#duracionMasajeGroup):not(.number-input-container) {
+    margin-bottom: 15px;
+}
+section > div > .number-input-container {
+     margin-top: 5px;
+     margin-bottom: 15px;
+}
+section > div > label + .number-input-container {
+     margin-top: 5px;
+}
+
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Inputs y Selects (Estilo base) */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    height: 38px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* --- Estilos para Input Numérico con Botones +/- --- */
+.number-input-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+    max-width: 150px;
+}
+.number-input-container input[type="number"] {
+    flex-grow: 1;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    width: 50px;
+    min-width: 40px;
+}
+.number-input-container button {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.number-input-container button:hover {
+    background-color: #dee2e6;
+}
+.number-input-container .btn-decrement {
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+.number-input-container .btn-increment {
+    border-radius: 0 4px 4px 0;
+}
+/* --- Fin Estilos Botones +/- --- */
+
+/* Ajustar tamaño del input de costo adicional */
+#costosAdicionales input[type="number"] {
+     width: auto;
+     min-width: 100px;
+}
+
+/* Botones de Duración */
+#duracionMasajeGroup {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.duracion-btn {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    color: #495057;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.95em;
+}
+.duracion-btn:hover { background-color: #e9ecef; }
+.duracion-btn.active { background-color: #0d6efd; color: white; border-color: #0d6efd; }
+
+/* Range Sliders */
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+    margin-top: 5px;
+}
+label[for="horasCoberturaEventual"] span,
+label[for="horasCoberturaDeportivo"] span,
+label[for="duracionVisitaCorporativoSlider"] span {
+    font-weight: normal; color: #0d6efd; margin-left: 5px;
+    display: inline-block; min-width: 2em; text-align: right;
+}
+
+/* Sección Resumen Presupuesto */
+#resumenPresupuesto {
+    background-color: #e7f1ff; padding: 20px; border-radius: 8px; border-bottom: none;
+}
+#resumenPresupuesto h2 { border-bottom: none; margin-bottom: 15px; }
+.resumen-principal { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #adb5bd; }
+.resumen-principal div { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.resumen-precio span { font-size: 1.15em; font-weight: bold; color: #495057; }
+.resumen-precio strong { font-size: 1.4em; color: #0a58ca; }
+.resumen-ganancia span, .resumen-ganancia strong { color: #198754; }
+.resumen-ganancia span { font-size: 1.05em; font-weight: bold; }
+.resumen-ganancia strong { font-size: 1.2em; }
+.resumen-detalles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; font-size: 0.95em; }
+.resumen-detalles h3 { font-size: 1.1em; color: #0d6efd; border-bottom: 1px solid #bde0fe; padding-bottom: 5px; }
+.resumen-detalles p { margin-bottom: 8px; color: #495057; }
+.resumen-detalles span { font-weight: bold; color: #343a40; margin-left: 5px; }
+
+/* Ocultar secciones dinámicas inicialmente */
+.detalle-subseccion { border: 1px dashed #dee2e6; padding: 15px; margin-top: 10px; border-radius: 5px; }
+
+/* Ocultar elementos al imprimir */
+@media print {
+    /* Ocultar SOLO los botones, NO el div contenedor ni la fecha */
+    #limpiarBtn,
+    #imprimirBtn {
+        display: none !important;
+    }
+
+    /* Asegurar que la fecha sea visible y legible */
+    #fechaActual {
+        display: inline !important; /* Asegura que se muestre */
+        color: #000 !important;    /* Texto negro */
+        margin-right: 0;           /* Quitar margen */
+        font-size: 0.9em;
+    }
+
+    body { padding: 5px; background-color: #fff !important; }
+    main { box-shadow: none; margin: 0; max-width: 100%; border: none; padding: 0; }
+    header {
+        border-radius: 0; margin: 0 0 15px 0; padding: 10px;
+        background-color: #eee !important; color: #000 !important;
+        -webkit-print-color-adjust: exact; color-adjust: exact;
+        border-bottom: 1px solid #ccc;
+        justify-content: space-between; /* Título a izq, fecha a der */
+        align-items: center;
+    }
+     header h1 { font-size: 1.3em; }
+     header div { /* El div que contiene la fecha */ display: block !important; }
+
+    section { border-bottom: 1px solid #ccc; padding-bottom: 15px; margin-bottom: 15px; page-break-inside: avoid; }
+    section h2 { border-bottom: none; font-size: 1.2em; color: #000; padding-bottom: 0; margin-bottom: 10px; }
+    #resumenPresupuesto { background-color: #fff !important; border: 1px solid #ccc; padding: 15px; page-break-inside: avoid; }
+    .resumen-principal { border-bottom: 1px solid #ccc; }
+    .resumen-principal strong, .resumen-ganancia strong, .resumen-ganancia span { color: #000 !important; }
+     .resumen-detalles { grid-template-columns: repeat(3, 1fr); }
+     input[type="range"], #duracionMasajeGroup, .number-input-container button { display: none; }
+     .number-input-container input[type="number"] { border: none; text-align: left; padding-left: 0; font-weight: bold; width: auto; }
+     select { border: none; padding: 0; font-weight: bold; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+     label { font-weight: normal; }
+}
